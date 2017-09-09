@@ -12,7 +12,8 @@ void set_PF(uint32_t result) {
 		num+=result%2;
 		result/=2;
 	}
-	cpu.eflags.PF=num%2;
+	if(num%2) cpu.eflags.PF=0;
+    else cpu.eflags.PF=1;
 }   
 void set_ZF(uint32_t result) {
 	cpu.eflags.ZF = (result == 0);
