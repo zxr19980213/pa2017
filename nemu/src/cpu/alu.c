@@ -3,6 +3,9 @@
 void set_CF_add(uint32_t result, uint32_t src) {
     cpu.eflags.CF = result < src;                                                                                
 }       
+void set_CF_sub(uint32_t dest,uint32_t src){
+    cpu.eflags.CF=dest<src;
+}
 void set_PF(uint32_t result) {
 	result<<=24;
 	result>>=24;
@@ -29,6 +32,11 @@ void set_OF_add(uint32_t result, uint32_t src, uint32_t dest) {
 	else { cpu.eflags.OF = 0;  
 	}
 }
+void set_OF_sub(uint32_t result,uint32_t src,uint32_t dest){
+    cpu.eflags.OF=0;
+    if((sign(src)!=sign(dest))&&sign(dest)!=sign(result))
+        cpu.eflags.OF=1;
+}
 
 
 uint32_t alu_add(uint32_t src, uint32_t dest) {
@@ -48,21 +56,35 @@ uint32_t alu_add(uint32_t src, uint32_t dest) {
 
 
 uint32_t alu_adc(uint32_t src, uint32_t dest) {
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
-	return 0;
+    uint32_t res=dest+src+1;
+
+    set_CF_add(res,src);
+    set_PF(res);
+    //set_AF;
+    set_ZF(res);
+    set_SF(res);
+    set_OF_add(res,srrc,dest);
+
+    return res
 }
 
 
 uint32_t alu_sub(uint32_t src, uint32_t dest) {
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
-	return 0;
+	uint32_t res=dest-src;
+
+    set_CF_sub(dest,src);
+    set_PF(res);
+    //set_AF;
+    set_ZF(res);
+    set_SF(res);
+    set_OF_sub(res,src,dest);
+
+    return res;
 }
 
 uint32_t alu_sbb(uint32_t src, uint32_t dest) {
 	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
+    assert(0);
 	return 0;
 }
 
