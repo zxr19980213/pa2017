@@ -52,7 +52,7 @@ void set_OF_mul(uint64_t result,uint32_t src,uint32_t dest,size_t data_size){
     int r=result<<(64-data_size)>>63;
     int s=src<<(32-src)>>31;
     int d=dest<<(32-src)>>31;
-    if((d==s&&r==1)||(d!=s&&r=0))cpu.eflags.OF=1;
+    if((d==s&&r==1)||(d!=s&&r==0))cpu.eflags.OF=1;
     else cpu.eflags.OF=0;
 }
 
