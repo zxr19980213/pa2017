@@ -3,7 +3,7 @@
 uint32_t alu_add(uint32_t src, uint32_t dest) {
 	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
 	assert(0);
-	return 0;
+	return src+dest;
 }
 
 uint32_t alu_adc(uint32_t src, uint32_t dest) {
