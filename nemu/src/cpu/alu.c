@@ -181,6 +181,7 @@ uint32_t alu_xor(uint32_t src, uint32_t dest) {
 uint32_t alu_or(uint32_t src, uint32_t dest) {
 	uint32_t res=dest|src;
 
+    cpu.eflags.CF=cpu.eflags.OF=0;
     set_PF(res);
     set_ZF(res);
     set_SF(res);
