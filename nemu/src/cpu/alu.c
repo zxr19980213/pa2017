@@ -9,6 +9,10 @@ void set_CF_sub(uint32_t dest,uint32_t src){
 void set_CF_adc(uint32_t result,uint32_t src,uint32_t dest){
     cpu.eflags.CF=(result<(src+cpu.eflags.CF))||(result<(dest+cpu.eflags.CF))||(cpu.eflags.CF==1&&result==dest);
 }
+void set_CF_sbb(uint32_t result,uint32_t src,uint32_t dest){
+    if(dest<src) cpu.eflags.CF=1;
+    else set_CF_sub(dest-src,cpu_eflags_CF);
+}
 void set_PF(uint32_t result) {
 	result<<=24;
 	result>>=24;
@@ -85,10 +89,17 @@ uint32_t alu_sub(uint32_t src, uint32_t dest) {
     return res;
 }
 
-uint32_t alu_sbb(uint32_t src, uint32_t dest) {
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-    assert(0);
-	return 0;
+uint32_t alu_sbb(uint32_t src, uint32_t dest){
+    uint32_t res=dest-src-cpu.eflags.CF;
+    
+    set_CF_sbb(res,src,dest);
+    set_PF(res);
+    //set_AF();
+    set_ZF(res);
+    set_SF(res);
+    set_OF_sub(res,src,dest);
+
+    return res;
 }
 
 
