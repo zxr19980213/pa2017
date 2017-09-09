@@ -56,7 +56,7 @@ uint32_t alu_add(uint32_t src, uint32_t dest) {
 
 
 uint32_t alu_adc(uint32_t src, uint32_t dest) {
-    uint32_t res=dest+src+1;
+    uint32_t res=dest+src+cpu.eflags.CF;
 
     set_CF_add(res,src);
     set_PF(res);
