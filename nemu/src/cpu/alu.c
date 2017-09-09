@@ -13,6 +13,10 @@ void set_CF_sbb(uint32_t result,uint32_t src,uint32_t dest){
     if(dest<src) cpu.eflags.CF=1;
     else set_CF_sub(dest-src,cpu.eflags.CF);
 }
+void set_CF_mul(uint64_t res,uint32_t src,uint32_t dest,size_t data_size){
+    uint32_t res1=res<<(64-data_size)>>(64-data_size);
+    cpu.eflags.CF=(res==res1);
+}
 void set_PF(uint32_t result) {
 	result<<=24;
 	result>>=24;
@@ -104,9 +108,16 @@ uint32_t alu_sbb(uint32_t src, uint32_t dest){
 
 
 uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size) {
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
-	return 0;
+	uint64_t  res=src*dest;
+
+    set_CF_mul(res,src,dest,data_size);
+    set_PF(res);
+    //set_AF();
+    set_ZF(res);
+    set_SF(res);
+    set_OF_mul(res,src,dest,data_size);
+
+    return res;
 }
 
 int64_t alu_imul(int32_t src, int32_t dest, size_t data_size) {
