@@ -52,9 +52,9 @@ void alu_test_add() {
 				: "a" (a), "c" (b));
 				test_eflags.val = res_eflags;
 	
-			//printf("oracle eflags CF = %d, PF = %d, ZF = %d, SF = %d, OF = %d\n", test_eflags.CF, test_eflags.PF, test_eflags.ZF, test_eflags.SF, test_eflags.OF);
-			//printf("nemu   eflags CF = %d, PF = %d, ZF = %d, SF = %d, OF = %d\n", cpu.eflags.CF, cpu.eflags.PF, cpu.eflags.ZF, cpu.eflags.SF, cpu.eflags.OF);
-			//printf("res = %x, res_asm = %x\n", res, res_asm);
+			printf("oracle eflags CF = %d, PF = %d, ZF = %d, SF = %d, OF = %d\n", test_eflags.CF, test_eflags.PF, test_eflags.ZF, test_eflags.SF, test_eflags.OF);
+			printf("nemu   eflags CF = %d, PF = %d, ZF = %d, SF = %d, OF = %d\n", cpu.eflags.CF, cpu.eflags.PF, cpu.eflags.ZF, cpu.eflags.SF, cpu.eflags.OF);
+			printf("res = %x, res_asm = %x\n", res, res_asm);
 
 			assert(res == res_asm);
 			assert(cpu.eflags.CF == test_eflags.CF);
