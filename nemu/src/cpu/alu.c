@@ -1,5 +1,9 @@
 #include "cpu/cpu.h"
 
+void set_CF_add(uint32_t result,uint32_t src);
+void set_PF(uint32_t result);
+void set_ZF(uint32_t result);
+void set_OF_add(uint32_t result,unt32_t src,uint32_t dest);
 uint32_t alu_add(uint32_t src, uint32_t dest) {
 	uint32_t res=0;
 	res=dest+src;
