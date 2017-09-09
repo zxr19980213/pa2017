@@ -48,7 +48,13 @@ void set_OF_sub(uint32_t result,uint32_t src,uint32_t dest){
     if((sign(src)!=sign(dest))&&sign(dest)!=sign(result))
         cpu.eflags.OF=1;
 }
-
+void set_OF_mul(uint64_t result,uint32_t src,uint32_t dest,size_t data_size){
+    int r=result<<(64-data_size)>>63;
+    int s=src<<(32-src)>>31;
+    int d=dest<<(32-src)>>31;
+    if((d==s&&r==1)||(d!=s&&r=0))cpu.eflags.OF=1;
+    else cpu.eflags.OF=0;
+}
 
 uint32_t alu_add(uint32_t src, uint32_t dest) {
 	uint32_t res=0;
@@ -115,7 +121,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size) {
     //set_AF();
     set_ZF(res);
     set_SF(res);
-    //set_OF_mul(res,src,dest,data_size);
+    set_OF_mul(res,src,dest,data_size);
 
     return res;
 }
