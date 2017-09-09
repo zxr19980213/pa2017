@@ -115,7 +115,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size) {
     //set_AF();
     set_ZF(res);
     set_SF(res);
-    set_OF_mul(res,src,dest,data_size);
+    //set_OF_mul(res,src,dest,data_size);
 
     return res;
 }
