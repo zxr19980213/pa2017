@@ -11,7 +11,7 @@ void set_CF_adc(uint32_t result,uint32_t src,uint32_t dest){
 }
 void set_CF_sbb(uint32_t result,uint32_t src,uint32_t dest){
     if(dest<src) cpu.eflags.CF=1;
-    else set_CF_sub(dest-src,cpu_eflags_CF);
+    else set_CF_sub(dest-src,cpu.eflags.CF);
 }
 void set_PF(uint32_t result) {
 	result<<=24;
