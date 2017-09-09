@@ -44,33 +44,6 @@ uint32_t alu_add(uint32_t src, uint32_t dest) {
 	return res;
 }
 
-void set_CF_add(uint32_t result, uint32_t src) {
-	   	cpu.eflags.CF = result < src;
-}
-void set_PF(uint32_t result) {
-	result<<=24;
-	result>>=24;
-	int num=0;
-	while(result!=0)
-	{
-			num+=result%2;
-			result/=2;
-	}
-	cpu.eflags.PF=num%2;
-}
-void set_ZF(uint32_t result) {
-	   	cpu.eflags.ZF = (result == 0);
-}
-void set_SF(uint32_t result) {
-	   	cpu.eflags.SF = sign(result);
-}
-void set_OF_add(uint32_t result, uint32_t src, uint32_t dest) {
-	   	if(sign(src) == sign(dest)) {
-			   	if(sign(src) != sign(result)) cpu.eflags.OF = 1; 
-				else cpu.eflags.OF = 0; } 
-		else { cpu.eflags.OF = 0; 
-		}
-}
 
 
 uint32_t alu_adc(uint32_t src, uint32_t dest) {
