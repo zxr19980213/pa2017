@@ -63,9 +63,9 @@ uint32_t alu_adc(uint32_t src, uint32_t dest) {
     //set_AF;
     set_ZF(res);
     set_SF(res);
-    set_OF_add(res,srrc,dest);
+    set_OF_add(res,src,dest);
 
-    return res
+    return res;
 }
 
 
