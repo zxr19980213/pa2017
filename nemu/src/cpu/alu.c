@@ -6,8 +6,8 @@ void set_CF_add(uint32_t result, uint32_t src) {
 void set_CF_sub(uint32_t dest,uint32_t src){
     cpu.eflags.CF=dest<src;
 }
-void set_CF_adc(uint32_t result,uint32_t src){
-    cpu.eflags.CF=((result<(src+cpu.eflags.CF))&&cpu.eflags.CF==0)||((result>=(src+cpu.eflags.CF))&&cpu.eflags.CF==1);
+void set_CF_adc(uint32_t result,uint32_t src,uint32_t dest){
+    cpu.eflags.CF=(result<(src+cpu.eflags.CF))||(result<(dest+cpu.eflags.CF));
 }
 void set_PF(uint32_t result) {
 	result<<=24;
@@ -61,7 +61,7 @@ uint32_t alu_add(uint32_t src, uint32_t dest) {
 uint32_t alu_adc(uint32_t src, uint32_t dest) {
     uint32_t res=dest+src+cpu.eflags.CF;
 
-    set_CF_adc(res,src);
+    set_CF_adc(res,src,dest);
     set_PF(res);
     //set_AF;
     set_ZF(res);
