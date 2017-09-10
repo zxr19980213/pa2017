@@ -57,6 +57,9 @@ void set_ZF(uint32_t result) {
 void set_SF(uint32_t result) {
 	cpu.eflags.SF = sign(result);
 }
+void set_SF_ran(uint32_t res,size_t data_size){
+    cpu.eflags.SF=(res>>(data_size-1))&0x1;
+}
 
 void set_OF_add(uint32_t result, uint32_t src, uint32_t dest) {
 	if(sign(src) == sign(dest)) {
@@ -241,7 +244,7 @@ uint32_t alu_shr(uint32_t src, uint32_t dest, size_t data_size) {
     set_CF_shr(src,dest,data_size);
     set_PF(res);
     set_ZF(res);
-    set_SF(res);
+    set_SF_ran(res,data_size);
 
     return res;
 }
@@ -266,7 +269,7 @@ uint32_t alu_sar(uint32_t src, uint32_t dest, size_t data_size) {
 }
 
 uint32_t alu_sal(uint32_t src, uint32_t dest, size_t data_size) {
-	uint32_t res=dest<<src;
+	/*uint32_t res=dest<<src;
     uint32_t temp=0;
     for(uint32_t i=0;i<data_size;++i){
         temp=(temp<<1)+1;
@@ -275,7 +278,7 @@ uint32_t alu_sal(uint32_t src, uint32_t dest, size_t data_size) {
     set_CF_shl(src,dest,data_size);
     set_PF(res);
     set_ZF(res);
-    set_SF(res);
+    set_SF(res);*/
 
-    return res;
+    return alu_shl(src,dest,data_size);
 }
