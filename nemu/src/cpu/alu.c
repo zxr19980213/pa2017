@@ -22,9 +22,20 @@ void set_CF_shl(uint32_t src,uint32_t dest,size_t data_size){
     }
 }
 void set_CF_shr(uint32_t src,uint32_t dest,size_t data_size){
-    uint32_t res=(dest>>(src-1))&0x1;
-    cpu.eflags.CF=res;
+    if(src>data_size)cpu.eflags.CF=0;
+    else{
+        uint32_t res=(dest>>(src-1))&0x1;
+        cpu.eflags.CF=res;
+    }
 }
+void set_CF_sar(uint32_t src,uint32_t dest,size_t data_size){
+    if(src>data_size)cpu.eflags.CF=1;
+    else{
+        uint32_t res=(dest>>(src-1))&0x1;
+        cpu.eflags.CF=res;
+    }
+}
+
 void set_CF_mul(uint64_t res,uint32_t src,uint32_t dest,size_t data_size){
     //uint32_t res1=res<<(64-data_size)>>(64-data_size);
     //cpu.eflags.CF=-(src==0||((uint32_t)res)/src==dest)+1;
@@ -266,15 +277,14 @@ uint32_t alu_sar(uint32_t src, uint32_t dest, size_t data_size) {
     if(myflag==0)
         return alu_shr(src,dest,data_size);
     else{
-        uint32_t res=0;
+        uint32_t temp=0;
         for(uint32_t i=0;i<data_size;++i)
-            res=(res<<1)+1;
-        res=(res>>(data_size-src)<<(data_size-src))+(dest>>src);
-
-        set_CF_shr(src,dest,data_size);
+            temp=(temp<<1)+1;
+        uint32_t res=(((~temp)|dest)>>src&temp)|((~temp)&dest);
+        set_CF_sar(src,dest,data_size);
         set_PF(res);
-        set_ZF(res);
-        set_SF(res);
+        set_ZF_ran(res,data_size);
+        set_SF_ran(res,data_size);
 
         return res;
     }
