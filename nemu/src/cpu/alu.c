@@ -23,7 +23,7 @@ void set_CF_shr(uint32_t src,uint32_t dest,size_t data_size){
 }
 void set_CF_mul(uint64_t res,uint32_t src,uint32_t dest,size_t data_size){
     //uint32_t res1=res<<(64-data_size)>>(64-data_size);
-    cpu.eflags.CF=-(src==0||res/src==dest)+1;
+    cpu.eflags.CF=-(src==0||((uint32_t)res)/src==dest)+1;
 }
 
 
