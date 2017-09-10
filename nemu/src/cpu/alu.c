@@ -233,7 +233,7 @@ uint32_t alu_shl(uint32_t src, uint32_t dest, size_t data_size) {
     set_CF_shl(src,dest,data_size); 
     set_PF(res);
     set_ZF(res);
-    set_SF(res);
+    set_SF_ran(res,data_size);
 
     return res;
 }
