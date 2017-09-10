@@ -58,7 +58,7 @@ void set_ZF_ran(uint32_t res,size_t data_size){
     for(uint32_t i=0;i<data_size;++i){
         temp=(temp<<1)+1;
     }
-    cpu.eflags.ZF=((res&temp)!=0);
+    cpu.eflags.ZF=((res&temp)==0);
 }
 
 void set_SF(uint32_t result) {
