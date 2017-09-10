@@ -53,6 +53,13 @@ void set_PF(uint32_t result) {
 void set_ZF(uint32_t result) {
 	cpu.eflags.ZF = (result == 0);
 }
+void set_ZF(uint32_t res,size_t data_size){
+    uint32_t temp=0;
+    for(uint32_t i=0;i<data_size;++i){
+        temp=(temp<<1)+1;
+    }
+    cpu.eflags.ZF=((res&temp)!=0);
+}
 
 void set_SF(uint32_t result) {
 	cpu.eflags.SF = sign(result);
@@ -232,7 +239,7 @@ uint32_t alu_shl(uint32_t src, uint32_t dest, size_t data_size) {
 
     set_CF_shl(src,dest,data_size); 
     set_PF(res);
-    set_ZF(res);
+    set_ZF_ran(res,data_size);
     set_SF_ran(res,data_size);
 
     return res;
