@@ -13,6 +13,10 @@ void set_CF_sbb(uint32_t result,uint32_t src,uint32_t dest){
     if(dest<src) cpu.eflags.CF=1;
     else set_CF_sub(dest-src,cpu.eflags.CF);
 }
+void set_CF_shl(uint32_t src,uint32_t dest,size_t data_size){
+    uint32_t res=dest<<(31-data_size+src)>>31;
+    cpu.eflags.CF=res;
+}
 void set_CF_mul(uint64_t res,uint32_t src,uint32_t dest,size_t data_size){
     uint32_t res1=res<<(64-data_size)>>(64-data_size);
     cpu.eflags.CF=(res==res1);
@@ -190,9 +194,16 @@ uint32_t alu_or(uint32_t src, uint32_t dest) {
 }
 
 uint32_t alu_shl(uint32_t src, uint32_t dest, size_t data_size) {
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
-	return 0;
+	
+    set_CF_shl(uint32_t src,uint32_t dest,size_t data_size);
+
+    uint32_t res=dest<<src;
+    
+    set_PF(res);
+    set_ZF(res);
+    set_SF(res);
+
+    return res;
 }
 
 uint32_t alu_shr(uint32_t src, uint32_t dest, size_t data_size) {
