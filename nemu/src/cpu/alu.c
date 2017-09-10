@@ -14,7 +14,7 @@ void set_CF_sbb(uint32_t result,uint32_t src,uint32_t dest){
     else set_CF_sub(dest-src,cpu.eflags.CF);
 }
 void set_CF_shl(uint32_t src,uint32_t dest,size_t data_size){
-    uint32_t res=dest<<(31-data_size+src)>>31;
+    uint32_t res=dest>>(data_size-src)&0x1;
     cpu.eflags.CF=res;
 }
 void set_CF_shr(uint32_t src,uint32_t dest,size_t data_size){
