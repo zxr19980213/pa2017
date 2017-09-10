@@ -122,7 +122,7 @@ uint32_t alu_sbb(uint32_t src, uint32_t dest){
 
 
 uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size) {
-	uint64_t  res=src*dest;
+	uint64_t  res=(long long)src*dest;
 
     set_CF_mul(res,src,dest,data_size);
     set_PF(res);
