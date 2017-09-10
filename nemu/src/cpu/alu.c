@@ -246,11 +246,11 @@ uint32_t alu_shl(uint32_t src, uint32_t dest, size_t data_size) {
 }
 
 uint32_t alu_shr(uint32_t src, uint32_t dest, size_t data_size) {
-	uint32_t res=dest>>src;
     uint32_t temp=0;
     for(uint32_t i=0;i<data_size;++i){
         temp=(temp<<1)+1;
     }
+    uint32_t res=(dest&temp)>>src;
     res=(res&temp)|(~temp&dest);
 
     set_CF_shr(src,dest,data_size);
