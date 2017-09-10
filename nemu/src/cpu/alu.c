@@ -280,7 +280,7 @@ uint32_t alu_sar(uint32_t src, uint32_t dest, size_t data_size) {
         uint32_t temp=0;
         for(uint32_t i=0;i<data_size;++i)
             temp=(temp<<1)+1;
-        uint32_t res=(((~temp)|dest)>>src&temp)|((~temp)&dest);
+        uint32_t res=((((~temp)|dest)>>src)&temp)|((~temp)&dest);
         set_CF_sar(src,dest,data_size);
         set_PF(res);
         set_ZF_ran(res,data_size);
