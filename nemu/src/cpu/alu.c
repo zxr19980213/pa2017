@@ -23,8 +23,10 @@ void set_CF_shr(uint32_t src,uint32_t dest,size_t data_size){
 }
 void set_CF_mul(uint64_t res,uint32_t src,uint32_t dest,size_t data_size){
     uint32_t res1=res<<(64-data_size)>>(64-data_size);
-    cpu.eflags.CF=(res==res1);
+    cpu.eflags.CF=(res==(uint64_t)res1);
 }
+
+
 void set_PF(uint32_t result) {
 	result<<=24;
 	result>>=24;
@@ -36,13 +38,16 @@ void set_PF(uint32_t result) {
 	}
 	if(num%2) cpu.eflags.PF=0;
     else cpu.eflags.PF=1;
-}   
+}
+
 void set_ZF(uint32_t result) {
 	cpu.eflags.ZF = (result == 0);
-}       
+}
+
 void set_SF(uint32_t result) {
 	cpu.eflags.SF = sign(result);
-}       
+}
+
 void set_OF_add(uint32_t result, uint32_t src, uint32_t dest) {
 	if(sign(src) == sign(dest)) {
 		if(sign(src) != sign(result)) cpu.eflags.OF = 1;
@@ -51,6 +56,7 @@ void set_OF_add(uint32_t result, uint32_t src, uint32_t dest) {
 	else { cpu.eflags.OF = 0;  
 	}
 }
+
 void set_OF_sub(uint32_t result,uint32_t src,uint32_t dest){
     cpu.eflags.OF=0;
     if((sign(src)!=sign(dest))&&sign(dest)!=sign(result))
@@ -122,7 +128,7 @@ uint32_t alu_sbb(uint32_t src, uint32_t dest){
 
 
 uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size) {
-	uint64_t  res=(long long)src*dest;
+	uint64_t  res=(uint64_t)src*dest;
 
     set_CF_mul(res,src,dest,data_size);
     set_PF(res);
