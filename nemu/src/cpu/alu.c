@@ -220,9 +220,21 @@ uint32_t alu_shr(uint32_t src, uint32_t dest, size_t data_size) {
 }
 
 uint32_t alu_sar(uint32_t src, uint32_t dest, size_t data_size) {
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
-	return 0;
+	uint32_t myflag=(dest>>(data_size-1))&0x1;
+    if(myflags==0)
+        return alu_shr(src,dest,data_size);
+    else{
+        uint32_t res=0;
+        for(uint32_t i=0;i<data_size;++i)
+            res=res<<1+1;
+        res=res&(dest>>src);
+
+        set_CF_shr(src,dest,data_size);
+        set_PF(res);
+        set_ZF(res);
+        set_SF(res);
+
+        return res;
 }
 
 uint32_t alu_sal(uint32_t src, uint32_t dest, size_t data_size) {
