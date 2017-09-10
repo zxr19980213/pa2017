@@ -176,21 +176,25 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size) {
 }
 
 int64_t alu_imul(int32_t src, int32_t dest, size_t data_size) {
-	uint64_t res=(uint64_t)src*dest;
+	int64_t res=(int64_t)src*dest;
     return res;
 }
 
 uint32_t alu_div(uint64_t src, uint64_t dest, size_t data_size) {
 	if(src==0){
         printf("motherfucker/n");
-        return 0;
+        exit(-1);
     }
     uint32_t res=dest/src;
     return res;
 }
 
 int32_t alu_idiv(int64_t src, int64_t dest, size_t data_size) {
-	return alu_div(src,dest,data_size);
+	if(src==0){
+        printf("motherfucker/n");
+        exit(-1);
+    }
+    return dest/src;
 }
 
 uint32_t alu_mod(uint64_t src, uint64_t dest) {
@@ -199,7 +203,7 @@ uint32_t alu_mod(uint64_t src, uint64_t dest) {
 }
 
 int32_t alu_imod(int64_t src, int64_t dest) {
-	return alu_mod(src,dest);
+	return dest%src;
 }
 
 uint32_t alu_and(uint32_t src, uint32_t dest) {
