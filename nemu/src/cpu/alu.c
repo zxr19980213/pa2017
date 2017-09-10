@@ -23,7 +23,13 @@ void set_CF_shr(uint32_t src,uint32_t dest,size_t data_size){
 }
 void set_CF_mul(uint64_t res,uint32_t src,uint32_t dest,size_t data_size){
     //uint32_t res1=res<<(64-data_size)>>(64-data_size);
-    cpu.eflags.CF=-(src==0||((uint32_t)res)/src==dest)+1;
+    //cpu.eflags.CF=-(src==0||((uint32_t)res)/src==dest)+1;
+    uint64_t temp=0;
+    for(uint32_t i=0;i<data_size;i++){
+        temp=(temp<<1)+1;
+    }
+    if(res>temp)cpu.eflags.CF=1;
+    else cpu.eflags.CF=0;
 }
 
 
@@ -69,7 +75,9 @@ void set_OF_mul(uint64_t result,uint32_t src,uint32_t dest,size_t data_size){
     if((d==s&&r==1)||(d!=s&&r==0))cpu.eflags.OF=1;
     else cpu.eflags.OF=0;*/
     
-    cpu.eflags.OF=-(src==0||((uint32_t)result)/src==dest)+1;
+    //cpu.eflags.OF=-(src==0||((uint32_t)result)/src==dest)+1;
+    if(cpu.eflags.CF==1)cpu.efags.OF=1;
+    else cpu.eflags.OF=0;
 }
 
 uint32_t alu_add(uint32_t src, uint32_t dest) {
