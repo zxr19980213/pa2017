@@ -199,9 +199,7 @@ uint32_t alu_mod(uint64_t src, uint64_t dest) {
 }
 
 int32_t alu_imod(int64_t src, int64_t dest) {
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
-	return 0;
+	return alu_mod(src,dest);
 }
 
 uint32_t alu_and(uint32_t src, uint32_t dest) {
