@@ -221,7 +221,7 @@ uint32_t alu_shl(uint32_t src, uint32_t dest, size_t data_size) {
         temp=(temp<<1)+1;
     }
     
-    res=res&temp|(~temp&dest);
+    res=(res&temp)|(~temp&dest);
 
     set_CF_shl(src,dest,data_size); 
     set_PF(res);
