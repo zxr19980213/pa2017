@@ -68,7 +68,7 @@ void set_OF_mul(uint64_t result,uint32_t src,uint32_t dest,size_t data_size){
     //int d=dest<<(32-src)>>31;
     //if((d==s&&r==1)||(d!=s&&r==0))cpu.eflags.OF=1;
     //else cpu.eflags.OF=0;
-    cpu.eflags.CF=-(src==0||((uint32_t)res)/src==dest)+1;
+    cpu.eflags.CF=-(src==0||((uint32_t)result)/src==dest)+1;
 }
 
 uint32_t alu_add(uint32_t src, uint32_t dest) {
