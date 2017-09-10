@@ -235,6 +235,7 @@ uint32_t alu_sar(uint32_t src, uint32_t dest, size_t data_size) {
         set_SF(res);
 
         return res;
+    }
 }
 
 uint32_t alu_sal(uint32_t src, uint32_t dest, size_t data_size) {
