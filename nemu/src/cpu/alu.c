@@ -76,7 +76,7 @@ void set_OF_mul(uint64_t result,uint32_t src,uint32_t dest,size_t data_size){
     else cpu.eflags.OF=0;*/
     
     //cpu.eflags.OF=-(src==0||((uint32_t)result)/src==dest)+1;
-    if(cpu.eflags.CF==1)cpu.efags.OF=1;
+    if(cpu.eflags.CF==1)cpu.eflags.OF=1;
     else cpu.eflags.OF=0;
 }
 
