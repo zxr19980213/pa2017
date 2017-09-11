@@ -124,7 +124,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a) {
 	uint32_t shift = 0;
 
 	/* TODO: shift = ? */
-	shift=b.exponent-sig_b>>23-a.exponent+sig_a>>23;
+	shift=fb.exponent-sig_b>>23-fa.exponent+sig_a>>23;
 
 	sig_a = (sig_a << 3); // guard, round, sticky
 	sig_b = (sig_b << 3);
