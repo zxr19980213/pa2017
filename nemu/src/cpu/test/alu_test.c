@@ -1260,9 +1260,9 @@ void alu_test_div() {
 		b = rand();
 		if(b == 0) continue;
 		aa.val = a;
-		quo = alu_idiv(b, a, 32);
-		rem = alu_imod(b, a);
-		asm ("idivl %%ecx" : "=a" (quo_asm), "=d" (rem_asm) : "a" (aa.low), "d" (aa.high), "c" ((uint32_t)b));
+		quo = alu_div(b, a, 32);
+		rem = alu_mod(b, a);
+		asm ("divl %%ecx" : "=a" (quo_asm), "=d" (rem_asm) : "a" (aa.low), "d" (aa.high), "c" ((uint32_t)b));
 		assert(quo == quo_asm);
 		assert(rem == rem_asm);
 	}
