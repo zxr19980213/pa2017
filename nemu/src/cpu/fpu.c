@@ -84,9 +84,10 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 		if((sig_grs&0x7)>4||((sig_grs&0x7)==4&&(sig_grs&0x8)==1)){
             sig_grs+=0x8;
             sig_grs>>=3;
-            if((sig_grs>>23)>1){
-                sig_grs>>=1;
+            while((sig_grs>>23)>1){
+                if((sig_grs&0x3)==3)sig_grs+=2;
                 exp++;
+                sig_grs>>=1;
                 if(exp>=0xff){
                     exp=0xff;
                     sig_grs=0;
