@@ -25,10 +25,10 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
                 sig_grs>>=1;
                 sig_grs|=0x1;
             }
-            /*else {
+            else {
                 sig_grs>>=1;
-                sig_grs&=0xfffffffffffffffe;
-            }*/
+                //sig_grs&=0xfffffffffffffffe;
+            }
             exp++;
             //printf("%x %llx ",exp,sig_grs);
 
