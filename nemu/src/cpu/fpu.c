@@ -182,7 +182,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a) {
 	else { f.sign = 0; }
 
 	uint32_t exp_res = fb.exponent;
-	printf("%x/n",sig_res);
+	printf("%x\n",sig_res);
     return internal_normalize(f.sign, exp_res, sig_res);
 }
 
