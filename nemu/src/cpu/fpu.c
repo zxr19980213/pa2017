@@ -26,7 +26,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
             }
             else {
                 sig_grs>>=1;
-                sig_gir&=0xfffffffe;
+                sig_grs&=0xfffffffe;
             }
             exp++;
 		}
