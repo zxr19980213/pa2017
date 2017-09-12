@@ -47,7 +47,6 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
             }
             else{
                 sig_grs>>=1;
-                sig_grs&=0xfffffffe;
             }
 		}
 		if(exp < 0) { 
@@ -97,7 +96,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
         else{
             sig_grs>>=3;
         }
-        sig_grs&=0x800000;
+        sig_grs&=0x7fffff;
         return sig_grs+(exp<<23)+(sign<<31);
 	}
 
