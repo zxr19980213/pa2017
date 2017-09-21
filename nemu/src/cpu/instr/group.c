@@ -29,7 +29,7 @@ make_group_impl(group_x87_dd);
 make_group_impl(group_x87_de);
 make_group_impl(group_x87_df);
 
-/*
+
 make_instr_func(group_1_bb) {
 	uint8_t op;
 	int len = 0; // opcode
@@ -172,4 +172,4 @@ make_instr_func(group_7) {
 
 	return len;
 }
-*/
+
