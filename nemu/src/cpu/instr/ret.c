@@ -8,5 +8,6 @@ make_instr_func(ret_near){
     operand_read(&temp);
     printf("%x\n",temp.val);
     cpu.eip=temp.val;
+    printf("there %x",cpu.eip);
     return 1;
 }
