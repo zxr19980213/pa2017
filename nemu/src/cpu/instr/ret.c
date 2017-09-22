@@ -7,7 +7,7 @@ make_instr_func(ret_near){
     temp.addr=cpu.ebp+4;
     operand_read(&temp);
     printf("%x\n",temp.val);
-    cpu.eip=temp.val;
+    int len=temp.val-cpu.eip;
     printf("there %x",cpu.eip);
-    return 1;
+    return len;
 }
