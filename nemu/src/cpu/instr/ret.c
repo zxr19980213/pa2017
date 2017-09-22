@@ -6,6 +6,7 @@ make_instr_func(ret_near){
     temp.type=OPR_MEM;
     temp.data_size=32;
     temp.addr=cpu.esp;
+    cpu.esp+=4;
     operand_read(&temp);
     printf("\n%x\n",temp.val);
     // int len=temp.val-cpu.eip;
