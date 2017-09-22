@@ -6,6 +6,7 @@ make_instr_func(call){
     readd.val=cpu.eip+5;
     readd.data_size=data_size;
     readd.addr=cpu.esp;
+    readd.type=REG;
     printf("fku\n");
     operand_write(&readd);
     printf("fkt\n");

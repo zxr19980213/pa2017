@@ -6,6 +6,7 @@ make_instr_func(push_ebp){
     dst.data_size=data_size;
     dst.addr=cpu.esp;
     dst.val=cpu.ebp;
+    dst.type=REG;
     operand_write(&dst);
     return 1;
 }
