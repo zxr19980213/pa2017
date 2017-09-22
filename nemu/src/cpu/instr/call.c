@@ -9,7 +9,7 @@ make_instr_func(call){
     readd.type=OPR_MEM;
     //printf("fku\n");
     operand_write(&readd);
-    //printf("fkt\n");
+    printf("fku %x",readd.val);
     OPERAND disp[4];
     int t=1,len=5;
     for(int i=0;i<4;++i){
