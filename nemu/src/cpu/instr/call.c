@@ -6,7 +6,9 @@ make_instr_func(call){
     readd.val=cpu.eip+5;
     readd.data_size=32;
     readd.addr=cpu.esp;
+    cout<<"fku";
     operand_write(&readd);
+    cout<<"fkt";
     OPERAND disp[4];
     int t=1,len=5;
     for(int i=0;i<4;++i){
