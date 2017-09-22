@@ -13,6 +13,7 @@ make_instr_func(call){
     OPERAND disp[4];
     int t=1,len=5;
     for(int i=0;i<4;++i){
+        disp[i].type=OPR_IMM;
         disp[i].data_size=8;
         disp[i].addr=cpu.eip+i+1;
         operand_read(&disp[i]);
