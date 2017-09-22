@@ -2,6 +2,7 @@
 
 make_instr_func(ret_near){
     OPERAND temp;
+    printf("%x\n",cpu.eip);
     temp.type=OPR_MEM;
     temp.data_size=32;
     temp.addr=cpu.ebp+4;
@@ -9,5 +10,6 @@ make_instr_func(ret_near){
     printf("%x\n",temp.val);
     int len=temp.val-cpu.eip;
     printf("there %x",cpu.eip);
-    return len;
+    printf("%x\n",len+1);
+    return len+1;
 }
