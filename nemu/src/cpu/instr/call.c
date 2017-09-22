@@ -7,9 +7,9 @@ make_instr_func(call){
     readd.data_size=data_size;
     readd.addr=cpu.esp;
     readd.type=OPR_MEM;
-    printf("fku\n");
+    //printf("fku\n");
     operand_write(&readd);
-    printf("fkt\n");
+    //printf("fkt\n");
     OPERAND disp[4];
     int t=1,len=5;
     for(int i=0;i<4;++i){

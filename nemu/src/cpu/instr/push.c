@@ -7,6 +7,7 @@ make_instr_func(push_ebp){
     dst.addr=cpu.esp;
     dst.val=cpu.ebp;
     dst.type=OPR_MEM;
+    printf("here %08x\n",dst.val);
     //printf("fku\n");
     operand_write(&dst);
     //printf("fkt\n");
