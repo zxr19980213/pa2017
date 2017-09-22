@@ -8,7 +8,7 @@ make_instr_func(call){
     readd.addr=cpu.esp;
     //readd.type=OPR_REG;
     printf("fku\n");
-    operand_write(readd);
+    operand_write(&readd);
     printf("fkt\n");
     OPERAND disp[4];
     int t=1,len=5;
