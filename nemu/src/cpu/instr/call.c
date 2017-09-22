@@ -4,7 +4,7 @@ make_instr_func(call){
     cpu.esp-=4;
     OPERAND readd;
     readd.val=cpu.eip+5;
-    readd.data_size=32;
+    readd.data_size=data_size;
     readd.addr=cpu.esp;
     printf("fku\n");
     operand_write(&readd);
