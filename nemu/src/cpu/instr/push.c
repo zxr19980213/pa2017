@@ -7,5 +7,5 @@ make_instr_func(push_ebp){
     dst.addr=cpu.esp;
     dst.val=cpu.ebp;
     operand_write(&dst);
-    return 2;
+    return 1;
 }
