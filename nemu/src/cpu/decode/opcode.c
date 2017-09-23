@@ -69,11 +69,11 @@ instr_func opcode_entry[256] = {
 
 /* 0x80 */
 instr_func group_1_b_entry[8] =
-{add_edx, inv, inv, inv, inv, inv, inv, inv};
+{inv, inv, inv, inv, inv, inv, inv, inv};
 
 /* 0x81 */
 instr_func group_1_v_entry[8] =
-{inv, inv, inv, inv, inv, inv, inv, inv};
+{add_edx, inv, inv, inv, inv, inv, inv, inv};
 
 /* 0x83 */
 instr_func group_1_bv_entry[8] =
