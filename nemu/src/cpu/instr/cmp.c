@@ -1,6 +1,6 @@
 #include "cpu/instr.h"
 
-make_instr_func(cmp_edi){
+make_instr_func(cmp_eax){
     OPERAND rm,imm;
     rm.data_size=data_size;
     imm.data_size=8;
@@ -10,8 +10,8 @@ make_instr_func(cmp_edi){
     operand_read(&imm);
     
     rm.type=OPR_REG;
-    if(rm.data_size==32)rm.val=cpu.edi;
-    else rm.val=(((unsigned)(cpu.edi<<16))>>16);
+    if(rm.data_size==32)rm.val=cpu.eax;
+    else rm.val=(((unsigned)(cpu.eax<<16))>>16);
     
     alu_sub(imm.val,rm.val);
     return 3;
