@@ -6,8 +6,9 @@ make_instr_func(cmp_b_rmv){
     rm.data_size=data_size;
     imm.type=OPR_IMM;
     int len=modrm_rm(eip+1,&rm);
-    imm.addr=eip+2+len;
+    imm.addr=eip+1+len;
     operand_read(&imm);
+    operand_read(&rm);
     
     if(data_size==16){
         imm.val=(int16_t)(char)imm.val;
