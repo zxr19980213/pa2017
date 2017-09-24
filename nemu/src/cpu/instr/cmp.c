@@ -9,11 +9,11 @@ make_instr_func(cmp_eax){
     operand_read(&imm);
     
     if(data_size==16){
-        int16_t nimm=(int16_t)(char)imm.val;
+        uint16_t nimm=(int16_t)(char)imm.val;
         alu_sub(nimm,cpu.gpr[0]._16);
     }
     else{
-        int32_t nimm=(int32_t)(char)imm.val;
+        uint32_t nimm=(int32_t)(char)imm.val;
         alu_sub(nimm,cpu.eax);
     }
     
