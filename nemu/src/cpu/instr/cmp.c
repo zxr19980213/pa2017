@@ -2,7 +2,6 @@
 
 make_instr_func(cmp_eax){
     OPERAND imm;
-    rm.data_size=data_size;
     imm.data_size=8;
 
     imm.type=OPR_IMM;
