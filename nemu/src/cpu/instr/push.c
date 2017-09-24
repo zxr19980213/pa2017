@@ -35,6 +35,7 @@ make_instr_func(push_edx){
     operand_write(&dst);
     return 1;
 }
+
 make_instr_func(push_eax){
     cpu.esp-=4;
     OPERAND dst;
