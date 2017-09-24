@@ -10,15 +10,11 @@ make_instr_func(call){
     //printf("fku\n");
     operand_write(&readd);
     printf("\n%x\n",readd.val);
-    OPERAND disp[4];
-    int t=1,len=5;
-    for(int i=0;i<4;++i){
-        disp[i].type=OPR_IMM;
-        disp[i].data_size=8;
-        disp[i].addr=cpu.eip+i+1;
-        operand_read(&disp[i]);
-        len+=(uint32_t)disp[i].val*t;
-        t*=16;
-    };
-    return len;
+    OPERAND dis;
+    dis.type=OPR_IMM;
+    dis.data_size=data_size;
+    dis.addr=eip+1;
+    operand_read(&dis);
+    
+    return 1+data_size/8+dis.val;
 }
