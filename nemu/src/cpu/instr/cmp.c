@@ -21,7 +21,7 @@ make_instr_func(cmp_eax){
 }
 
 make_instr_func(cmp_rv_rmv){
-    printf("\ncmp:eax=%x ecx=%x\n",cpu.eax,cpu.ecx);
+    //printf("\ncmp:eax=%x ecx=%x\n",cpu.eax,cpu.ecx);
     OPERAND r,rm;
     r.data_size=data_size;
     rm.data_size=data_size;
@@ -30,7 +30,7 @@ make_instr_func(cmp_rv_rmv){
     len+=modrm_r_rm(eip+1,&r,&rm);
     operand_read(&r);
     operand_read(&rm);
-    printf("\n%x %x\n",r.val,rm.val);
+    //printf("\n%x %x\n",r.val,rm.val);
     alu_sub(r.val,rm.val);
     return len;
 }
