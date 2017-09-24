@@ -3,5 +3,6 @@
 
 make_instr_func(add_edx);
 make_instr_func(add_iv_eax);
+make_instr_func(add_rv_rmv);
 
 #endif

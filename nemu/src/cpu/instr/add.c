@@ -22,3 +22,15 @@ make_instr_func(add_iv_eax){
     else cpu.eax=alu_add(imm.val,cpu.eax);
     return 1+data_size/8;
 }
+
+make_instr_func(add_rv_rmv){
+    OPERAND r,rm;
+    r.data_size=data_size;
+    rm.data_size=data_size;
+    int len=1;
+    len+=modrm_r_rm(eip+1,&r,&rm);
+    operand_read(&r);
+    operand_read(&rm);
+    rm.val+=r.val;
+    operand_write(&rm);
+}
