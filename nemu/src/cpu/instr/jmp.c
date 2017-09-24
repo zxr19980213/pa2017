@@ -23,5 +23,5 @@ make_instr_func(jmp_short_){
     dis.type=OPR_IMM;
     dis.data_size=8;
     operand_read(&dis);
-    return 2+(char)dis.val;
+    return 2+dis.val;
 }
