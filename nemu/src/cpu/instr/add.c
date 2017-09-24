@@ -1,18 +1,17 @@
 #include "cpu/instr.h"
 
-make_instr_func(add_iv_rv){
-    OPERAND imm,rv;
-    rv.data_size=data_size;
+make_instr_func(add_iv_rmv){
+    OPERAND imm,rm;
+    rm.data_size=data_size;
     imm.data_size=data_size;
-    modrm_rm(eip+1,&rv);
-    imm.addr=eip+2;
+    int len=modrm_rm(eip+1,&rm);
+    imm.addr=eip+1+len;
     imm.type=OPR_IMM;
     operand_read(&imm);
-    operand_read(&rv);
-    rv.val=alu_add(imm.val,rv.val);
-    operand_write(&rv);
-    //printf("\nimm.val=%x\n",imm.val);
-    return 2+data_size/8;
+    operand_read(&rm);
+    rv.val=alu_add(imm.val,rm.val);
+    operand_write(&rm);
+    return 1+len+data_size/8;
 }
 
 make_instr_func(add_iv_eax){
@@ -41,21 +40,16 @@ make_instr_func(add_rv_rmv){
     return len;
 }
 
-make_instr_func(add_esp){
-    //printf("\nadd:esp=%x\n",cpu.esp);
-    OPERAND imm;
+make_instr_func(add_b_rmv){
+    OPERAND imm,rm;
     imm.data_size=8;
     imm.type=OPR_IMM;
-    imm.addr=eip+2;
+    rm.data_size=data_size;
+    int len=modrm_rm(eip+1,&rm);
+    operand_read(&rm);
+    imm.addr=eip+1+len;
     operand_read(&imm);
-    if(data_size==16){
-        uint16_t nimm=(int16_t)(char)imm.val;
-        cpu.gpr[4]._16=alu_add(nimm,cpu.gpr[4]._16);
-    }
-    else{
-        uint32_t nimm=(int32_t)(char)imm.val;
-        cpu.esp=alu_add(nimm,cpu.esp);
-    }
-    //printf("\nadd:esp=%x\n",cpu.esp);
-    return 3;
+    rm.val=alu_add(imm.val,rm.val);
+    operand_write(&rm)
+    return 2+len;
 }
