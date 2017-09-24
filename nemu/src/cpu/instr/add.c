@@ -9,7 +9,7 @@ make_instr_func(add_iv_rmv){
     imm.type=OPR_IMM;
     operand_read(&imm);
     operand_read(&rm);
-    rv.val=alu_add(imm.val,rm.val);
+    rm.val=alu_add(imm.val,rm.val);
     operand_write(&rm);
     return 1+len+data_size/8;
 }
@@ -50,6 +50,6 @@ make_instr_func(add_b_rmv){
     imm.addr=eip+1+len;
     operand_read(&imm);
     rm.val=alu_add(imm.val,rm.val);
-    operand_write(&rm)
+    operand_write(&rm);
     return 2+len;
 }
