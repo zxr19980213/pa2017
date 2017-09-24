@@ -33,7 +33,7 @@ make_instr_func(add_rv_rmv){
     len+=modrm_r_rm(eip+1,&r,&rm);
     operand_read(&r);
     operand_read(&rm);
-    rm.val+=r.val;
+    rm.val=alu_add(r.val,rm.val);
     operand_write(&rm);
     return len;
 }
