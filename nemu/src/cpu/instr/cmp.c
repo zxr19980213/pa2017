@@ -21,6 +21,7 @@ make_instr_func(cmp_eax){
 }
 
 make_instr_func(cmp_rv_rmv){
+    printf("\ncmp:eax=%x ecx=%x\n",cpu.eax,cpu.ecx);
     OPERAND r,rm;
     r.data_size=data_size;
     rm.data_size=data_size;
