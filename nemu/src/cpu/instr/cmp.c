@@ -25,6 +25,7 @@ make_instr_func(cmp_rv_rmv){
     OPERAND r,rm;
     r.data_size=data_size;
     rm.data_size=data_size;
+    r.type=OPR_REG;
     int len=1;
     len+=modrm_r_rm(eip+1,&r,&rm);
     operand_read(&r);
