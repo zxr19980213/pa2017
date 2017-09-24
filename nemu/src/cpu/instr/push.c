@@ -35,3 +35,13 @@ make_instr_func(push_edx){
     operand_write(&dst);
     return 1;
 }
+make_instr_func(push_eax){
+    cpu.esp-=4;
+    OPERAND dst;
+    dst.data_size=data_size;
+    dst.addr=cpu.esp;
+    dst.val=cpu.eax;
+    dst.type=OPR_MEM;
+    operand_write(&dst);
+    return 1;
+}
