@@ -73,11 +73,11 @@ instr_func group_1_b_entry[8] =
 
 /* 0x81 */
 instr_func group_1_v_entry[8] =
-{add_edx, inv, inv, inv, inv, inv, inv, inv};
+{add_iv_edx, inv, inv, inv, inv, inv, inv, inv};
 
 /* 0x83 */
 instr_func group_1_bv_entry[8] =
-{inv, inv, inv, inv, inv, sub_esp, inv, cmp_eax};
+{add_esp, inv, inv, inv, inv, sub_esp, inv, cmp_eax};
 
 /* 0xc0 */
 instr_func group_2_b_entry[8] =
