@@ -28,7 +28,7 @@ make_instr_func(push_ebx){
 make_instr_func(push_edx){
     cpu.esp-=4;
     OPERAND dst;
-    dst,data_size=data_size;
+    dst.data_size=data_size;
     dst.addr=cpu.esp;
     dst.val=cpu.edx;
     dst.type=OPR_MEM;
