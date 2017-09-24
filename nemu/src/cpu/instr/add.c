@@ -3,7 +3,7 @@
 make_instr_func(add_edx){
     OPERAND imm;
     imm.data_size=data_size;
-    imm.addr=cpu.eip+1;
+    imm.addr=eip+1;
     imm.type=OPR_IMM;
     operand_read(&imm);
     if(data_size==16)cpu.gpr[2]._16=alu_add(imm.val,cpu.gpr[2]._16);
