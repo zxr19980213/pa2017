@@ -1,4 +1,4 @@
-src/cpu/decode/opcode.o: src/cpu/decode/opcode.c include/cpu/instr.h \
+src/cpu/instr/inc.o: src/cpu/instr/inc.c include/cpu/instr.h \
  include/nemu.h include/macro.h ../include/config.h include/cpu/cpu.h \
  include/cpu/reg.h include/cpu/alu.h include/cpu/reg_fpu.h \
  include/cpu/fpu.h include/cpu/modrm.h include/cpu/operand.h \
