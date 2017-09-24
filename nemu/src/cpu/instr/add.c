@@ -39,7 +39,7 @@ make_instr_func(add_rv_rmv){
 make_instr_func(add_esp){
     OPERAND imm;
     imm.data_size=8;
-    imm.data_type=OPR_IMM;
+    imm.type=OPR_IMM;
     imm.addr=eip+2;
     operand_read(&imm);
     if(data_size==16){
