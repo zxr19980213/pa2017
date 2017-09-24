@@ -213,6 +213,8 @@ static inline bool inv_cc();
 
 #define condition_c \
 	cpu.eflags.CF
+#define condition_be \
+    cpu.eflags.CF==1||cpu.eflags.ZF==1
 
 static inline bool inv_cc() {
 	printf("Please implement cc condition in instr_helper.h\n");

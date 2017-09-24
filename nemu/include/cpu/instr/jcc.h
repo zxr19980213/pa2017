@@ -33,5 +33,7 @@ make_instr_func(jnp_near);
 make_instr_func(jnp_short_);
 make_instr_func(jns_near);
 make_instr_func(jns_short_);
+make_instr_func(jbe_near);
+make_instr_func(jbe_short_);
 
 #endif
