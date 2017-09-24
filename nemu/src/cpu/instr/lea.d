@@ -1,4 +1,4 @@
-src/cpu/instr/cmp.o: src/cpu/instr/cmp.c include/cpu/instr.h \
+src/cpu/instr/lea.o: src/cpu/instr/lea.c include/cpu/instr.h \
  include/nemu.h include/macro.h ../include/config.h include/cpu/cpu.h \
  include/cpu/reg.h include/cpu/alu.h include/cpu/reg_fpu.h \
  include/cpu/fpu.h include/cpu/modrm.h include/cpu/operand.h \
