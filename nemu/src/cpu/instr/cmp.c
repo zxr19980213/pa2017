@@ -19,3 +19,15 @@ make_instr_func(cmp_eax){
     
     return 3;
 }
+
+make_instr_func(cmp_rv_rmv){
+    OPERAND r,rm;
+    r.data_size=data_size;
+    rm.data_size=data_size;
+    int len=1;
+    len+=modrn_r_rm(eip+1,&r,&rm);
+    operand_read(&r);
+    operand_read(&rm);
+    alu_sub(r.val,rm.val);
+    return len;
+}
