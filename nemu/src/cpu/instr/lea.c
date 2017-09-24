@@ -1,7 +1,7 @@
 #include "cpu/instr.h"
 
 make_instr_func(lea_m_rv){
-    //printf("\nlea:eax=%x ecx=%x\n",cpu.eax,cpu.ecx);
+    printf("\nlea:eax=%x ecx=%x\n",cpu.eax,cpu.ecx);
     OPERAND m,rv;
     m.data_size=data_size;
     rv.data_size=data_size;
