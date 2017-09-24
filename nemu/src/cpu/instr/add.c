@@ -37,6 +37,7 @@ make_instr_func(add_rv_rmv){
 }
 
 make_instr_func(add_esp){
+    printf("\nadd:esp=%x\n",cpu.esp);
     OPERAND imm;
     imm.data_size=8;
     imm.type=OPR_IMM;
@@ -50,5 +51,6 @@ make_instr_func(add_esp){
         uint32_t nimm=(int32_t)(char)imm.val;
         cpu.esp=alu_add(nimm,cpu.esp);
     }
+    printf("\nadd:esp=%x\n",cpu.esp);
     return 3;
 }
