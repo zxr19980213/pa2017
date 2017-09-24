@@ -13,7 +13,7 @@ make_instr_func(sub_esp){
     }
     else{
         uint32_t nimm=(int32_t)(char)imm.val;
-        cup.esp=alu_sub(nimm,cpu.esp);
+        cpu.esp=alu_sub(nimm,cpu.esp);
     }
     return 3;
 }
