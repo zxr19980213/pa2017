@@ -1,7 +1,7 @@
 #include "cpu/instr.h"
 
 make_instr_func(sub_esp){
-    printf("\nsub:esp=%x\n",cpu.esp);
+    //printf("\nsub:esp=%x\n",cpu.esp);
     OPERAND imm;
     imm.data_size=8;
     imm.type=OPR_IMM;
