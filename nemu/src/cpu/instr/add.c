@@ -33,4 +33,5 @@ make_instr_func(add_rv_rmv){
     operand_read(&rm);
     rm.val+=r.val;
     operand_write(&rm);
+    return len;
 }
