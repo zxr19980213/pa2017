@@ -9,7 +9,8 @@ src/cpu/decode/opcode.o: src/cpu/decode/opcode.c include/cpu/instr.h \
  include/cpu/instr/flags.h include/cpu/instr/group.h \
  include/cpu/instr/special.h include/cpu/instr/x87.h \
  include/cpu/instr/cmp.h include/cpu/instr/push.h \
- include/cpu/instr/call.h include/cpu/instr/ret.h include/cpu/instr/add.h
+ include/cpu/instr/call.h include/cpu/instr/ret.h include/cpu/instr/add.h \
+ include/cpu/instr/test.h
 
 include/cpu/instr.h:
 
@@ -66,3 +67,5 @@ include/cpu/instr/call.h:
 include/cpu/instr/ret.h:
 
 include/cpu/instr/add.h:
+
+include/cpu/instr/test.h:
