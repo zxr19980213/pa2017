@@ -10,13 +10,14 @@ make_instr_func(cmp_eax){
     operand_read(&imm);
     
     rm.type=OPR_REG;
+    int32_t nimm;
     if(rm.data_size==32){
         rm.val=cpu.eax;
-        int32_t nimm=imm.val;
+        nimm=imm.val;
     }
     else {
         rm.val=(((unsigned)(cpu.eax<<16))>>16);
-        int16_t nimm=imm.val;
+        nimm=(int16_t)imm.val;
     }
     
     alu_sub(nimm,rm.val);
