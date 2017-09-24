@@ -16,6 +16,6 @@ make_instr_func(sub_esp){
         uint32_t nimm=(int32_t)(char)imm.val;
         cpu.esp=alu_sub(nimm,cpu.esp);
     }
-    printf("\nsub:esp=%x\n",cpu.esp);
+    //printf("\nsub:esp=%x\n",cpu.esp);
     return 3;
 }
