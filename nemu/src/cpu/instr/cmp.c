@@ -1,7 +1,7 @@
 #include "cpu/instr.h"
 
 make_instr_func(cmp_eax){
-    OPERAND rm,imm;
+    OPERAND imm;
     rm.data_size=data_size;
     imm.data_size=8;
 
@@ -9,17 +9,14 @@ make_instr_func(cmp_eax){
     imm.addr=eip+1;
     operand_read(&imm);
     
-    rm.type=OPR_REG;
-    int32_t nimm;
-    if(rm.data_size==32){
-        rm.val=cpu.eax;
-        nimm=imm.val;
+    if(data_size==16){
+        int16_t nimm=(int16_t)(char)imm.val;
+        alu_sub(nimm,cpu.gpr[0]._16);
     }
-    else {
-        rm.val=(((unsigned)(cpu.eax<<16))>>16);
-        nimm=(int16_t)imm.val;
+    else{
+        int32_t nimm=(int32_t)(char)imm.val;
+        alu_sub(nimm,cpu.eax);
     }
     
-    alu_sub(nimm,rm.val);
     return 3;
 }
