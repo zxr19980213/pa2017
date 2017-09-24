@@ -5,7 +5,7 @@ make_instr_func(cmp_eax){
     imm.data_size=8;
 
     imm.type=OPR_IMM;
-    imm.addr=eip+1;
+    imm.addr=eip+2;
     operand_read(&imm);
     
     if(data_size==16){
