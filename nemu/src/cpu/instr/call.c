@@ -9,7 +9,7 @@ make_instr_func(call){
     readd.type=OPR_MEM;
     //printf("fku\n");
     operand_write(&readd);
-    printf("\n%x\n",readd.val);
+    //printf("\n%x\n",readd.val);
     OPERAND dis;
     dis.type=OPR_IMM;
     dis.data_size=data_size;
