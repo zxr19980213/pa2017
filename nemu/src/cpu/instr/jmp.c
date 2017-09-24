@@ -16,3 +16,12 @@ make_instr_func(jmp_near) {
 
         return 1 + data_size / 8;
 }
+
+make_instr_func(jmp_short_){
+    OPERAND dis;
+    dis.addr=eip+1;
+    dis.type=OPR_IMM;
+    dis.data_size=8;
+    operand_read(&dis);
+    return 2+(char)dis.val;
+}
