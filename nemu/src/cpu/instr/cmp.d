@@ -11,7 +11,7 @@ src/cpu/instr/cmp.o: src/cpu/instr/cmp.c include/cpu/instr.h \
  include/cpu/instr/cmp.h include/cpu/instr/push.h \
  include/cpu/instr/call.h include/cpu/instr/ret.h include/cpu/instr/add.h \
  include/cpu/instr/test.h include/cpu/instr/jcc.h include/cpu/instr/sub.h \
- include/cpu/instr/leave.h
+ include/cpu/instr/leave.h include/cpu/instr/lea.h
 
 include/cpu/instr.h:
 
@@ -76,3 +76,5 @@ include/cpu/instr/jcc.h:
 include/cpu/instr/sub.h:
 
 include/cpu/instr/leave.h:
+
+include/cpu/instr/lea.h:
