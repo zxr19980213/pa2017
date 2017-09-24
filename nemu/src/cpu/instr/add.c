@@ -1,13 +1,16 @@
 #include "cpu/instr.h"
 
-make_instr_func(add_iv_edx){
-    OPERAND imm;
+make_instr_func(add_iv_rv){
+    OPERAND imm,rv;
+    rv.data_size=data_size;
     imm.data_size=data_size;
+    modrm_rm(eip+1,&rv);
     imm.addr=eip+2;
     imm.type=OPR_IMM;
     operand_read(&imm);
-    if(data_size==16)cpu.gpr[2]._16=alu_add(imm.val,cpu.gpr[2]._16);
-    else cpu.edx=alu_add(imm.val,cpu.edx);
+    operand_read(&rv);
+    rv.val=alu_add(imm.val,rv.val);
+    operand_write(&rv);
     //printf("\nimm.val=%x\n",imm.val);
     return 2+data_size/8;
 }
