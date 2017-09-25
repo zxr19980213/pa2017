@@ -8,5 +8,7 @@ make_instr_func(push_eax);
 make_instr_func(push_mv);
 make_instr_func(push_edi);
 make_instr_func(push_esi);
+make_instr_func(push_ecx);
+make_instr_func(push_esp);
 
 #endif
