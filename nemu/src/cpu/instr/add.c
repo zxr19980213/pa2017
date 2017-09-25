@@ -49,7 +49,7 @@ make_instr_func(add_b_rmv){
     operand_read(&rm);
     imm.addr=eip+1+len;
     operand_read(&imm);
-    if(data_sizze==16){
+    if(data_size==16){
         imm.val=(int16_t)(char)imm.val;
     }
     else
