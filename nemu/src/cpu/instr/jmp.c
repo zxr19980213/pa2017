@@ -18,10 +18,18 @@ make_instr_func(jmp_near) {
 }
 
 make_instr_func(jmp_short_){
-    OPERAND dis;
-    dis.addr=eip+1;
-    dis.type=OPR_IMM;
-    dis.data_size=8;
-    operand_read(&dis);
-    return 2+dis.val;
+        OPERAND rel;
+        rel.type = OPR_IMM;
+	rel.sreg = SREG_CS;
+        rel.data_size = 8;
+        rel.addr = eip + 1;
+
+        operand_read(&rel);
+
+	int offset = sign_ext(rel.val, data_size);
+	print_asm_1("jmp", "", 2, &rel);
+
+	cpu.eip += offset;
+
+        return 2;
 }
