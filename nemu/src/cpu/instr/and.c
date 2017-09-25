@@ -9,9 +9,11 @@ make_instr_func(and_b_rmv){
     imm.addr=eip+1+len;
     operand_read(&imm);
     operand_read(&rm);
+    printf("\nand.c:esp=%x\n",cpu.esp);
     if(data_size==16)imm.val=(int16_t)(char)imm.val;
     else imm.val=(int32_t)(char)imm.val;
     rm.val=alu_and(imm.val,rm.val);
     operand_write(&rm);
+    printf("\nand.c:esp=%x\n",cpu.esp);
     return len+2;
 }
