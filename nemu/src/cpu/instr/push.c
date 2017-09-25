@@ -79,3 +79,25 @@ make_instr_func(push_esi){
     operand_write(&dst);
     return 1;
 }
+
+make_instr_func(push_ecx){
+    cpu.esp-=4;
+    OPERAND dst;
+    dst.data_size=data_size;
+    dst.addr=cpu.esp;
+    dst.val=cpu.ecx;
+    dst.type=OPR_MEM;
+    operand_write(&dst);
+    return 1;
+}
+
+make_instr_func(push_esp){
+    cpu.esp-=4;
+    OPERAND dst;
+    dst.data_size=data_size;
+    dst.addr=cpu.esp;
+    dst.val=cpu.esp;
+    dst.type=OPR_MEM;
+    operand_write(&dst);
+    return 1;
+}
