@@ -77,7 +77,7 @@ instr_func group_1_v_entry[8] =
 
 /* 0x83 */
 instr_func group_1_bv_entry[8] =
-{add_b_rmv, inv, inv, inv, inv, sub_b_rmv, inv, cmp_b_rmv};
+{add_b_rmv, inv, inv, inv, and_b_rmv, sub_b_rmv, inv, cmp_b_rmv};
 
 /* 0xc0 */
 instr_func group_2_b_entry[8] =
