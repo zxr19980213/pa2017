@@ -113,7 +113,7 @@ instr_func group_3_v_entry[8] =
 
 /* 0xff */
 instr_func group_5_indirect_entry[8] =
-{inc_rmv, inv, inv, inv, inv, inv, inv, inv};
+{inc_rmv, inv, inv, inv, inv, inv, push_mv, inv};
 
 instr_func group_7_entry[8] = 
 {inv, inv, inv, inv, inv, inv, inv, inv};

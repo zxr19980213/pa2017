@@ -46,3 +46,14 @@ make_instr_func(push_eax){
     operand_write(&dst);
     return 1;
 }
+
+make_instr_func(push_mv){
+    cpu.esp-=4;
+    OPERAND m;
+    m.data_size=data_size;
+    int len=modrm_rm(eip+1,&m);
+    operand_read(&m);
+    m.addr=cpu.esp;
+    operand_write(&m);
+    return len+1;
+}
