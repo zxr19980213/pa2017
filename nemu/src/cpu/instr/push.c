@@ -57,3 +57,14 @@ make_instr_func(push_mv){
     operand_write(&m);
     return len+1;
 }
+
+make_instr_func(push_edi){
+    cpu.esp-=4;
+    OPERAND dst;
+    dst.data_size=data_size;
+    dst.addr=cpu.esp;
+    dst.val=cpu.edi;
+    dst.type=OPR_MEM;
+    operand_write(&dst);
+    return 1;
+}
