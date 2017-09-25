@@ -49,6 +49,11 @@ make_instr_func(add_b_rmv){
     operand_read(&rm);
     imm.addr=eip+1+len;
     operand_read(&imm);
+    if(data_sizze==16){
+        imm.val=(int16_t)(char)imm.val;
+    }
+    else
+        imm.val=(int32_t)(char)imm.val;
     rm.val=alu_add(imm.val,rm.val);
     operand_write(&rm);
     return 2+len;
