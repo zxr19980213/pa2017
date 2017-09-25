@@ -12,5 +12,6 @@ make_instr_func(sub_b_rmv){
     if(data_size==16)imm.val=(int16_t)(char)imm.val;
     else imm.val=(int32_t)(char)imm.val;
     rm.val=alu_sub(imm.val,rm.val);
+    operand_write(&rm);
     return 2+len;
 }

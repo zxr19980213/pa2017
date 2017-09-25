@@ -4,7 +4,7 @@ make_instr_func(ret_near){
     OPERAND temp;
     //printf("\n%x\n",cpu.eip);
     temp.type=OPR_MEM;
-    temp.data_size=32;
+    temp.data_size=data_size;
     temp.addr=cpu.esp;
     cpu.esp+=4;
     operand_read(&temp);
